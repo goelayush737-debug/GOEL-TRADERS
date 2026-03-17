@@ -1,13 +1,411 @@
-<section id="tiles">
-<h2>600x1200 Vitrified Tiles</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goel Traders</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f5f3ef;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      z-index: 1000;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: #a86a15;
+      letter-spacing: 0.5px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 18px;
+      font-weight: 600;
+    }
+    header {
+      min-height: 92vh;
+      color: white;
+      background: linear-gradient(120deg, rgba(0,0,0,.78), rgba(0,0,0,.40)), url('WhatsApp Image 2026-03-16 at 22.20.04.jpeg') center/cover;
+      display: flex;
+      align-items: center;
+    }
+    .hero-wrap {
+      max-width: 1200px;
+      margin: auto;
+      width: 100%;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      max-width: 700px;
+      font-size: 1.08rem;
+      margin-bottom: 24px;
+      color: #f2f2f2;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+    .hero-card h3 { margin-bottom: 12px; font-size: 1.4rem; }
+    .hero-card p { margin-bottom: 8px; color: #f7f7f7; }
+    .btn {
+      display: inline-block;
+      background: #a86a15;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 6px 10px 6px 0;
+      box-shadow: 0 8px 18px rgba(168,106,21,0.25);
+    }
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid white;
+      box-shadow: none;
+    }
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 78px 20px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+      color: #a86a15;
+    }
+    .section-text {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 36px;
+      color: #555;
+    }
+    .quick-strip {
+      max-width: 1200px;
+      margin: -44px auto 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 5;
+    }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .quick-box {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .quick-box h3 { color: #a86a15; margin-bottom: 8px; font-size: 1.1rem; }
+    .cards, .products, .gallery, .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+    }
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+    .card-content { padding: 18px; }
+    .card-content h3 { margin-bottom: 8px; }
+    .about {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .about img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+    .highlight { color: #a86a15; font-weight: bold; }
+    .feature-banner {
+      background: linear-gradient(135deg, #161616, #2a2a2a);
+      color: white;
+      border-radius: 24px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .feature-banner img {
+      width: 100%;
+      border-radius: 18px;
+      height: 100%;
+      object-fit: cover;
+      min-height: 340px;
+    }
+    .contact-box {
+      background: white;
+      padding: 34px;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      max-width: 850px;
+      margin: auto;
+    }
+    .contact-box p { margin-bottom: 12px; font-size: 1.05rem; }
+    .cta-final {
+      background: linear-gradient(135deg, #a86a15, #d4983c);
+      color: white;
+      border-radius: 24px;
+      padding: 36px;
+      text-align: center;
+      margin-top: 15px;
+      box-shadow: 0 14px 30px rgba(168,106,21,0.22);
+    }
+    footer {
+      background: #1f1f1f;
+      color: white;
+      text-align: center;
+      padding: 24px 20px;
+      margin-top: 40px;
+    }
+    @media (max-width: 900px) {
+      .hero-wrap, .about, .feature-banner { grid-template-columns: 1fr; }
+      .quick-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-card { margin-top: 6px; }
+    }
+    @media (max-width: 600px) {
+      .quick-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      nav a { margin-left: 10px; }
+      .card img { height: 240px; }
+      section { padding: 64px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Goel Traders</div>
+      <div>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-<p>Premium vitrified tiles available for floor and wall.</p>
+  <header>
+    <div class="hero-wrap">
+      <div class="hero">
+        <div class="hero-badges">
+          <span class="badge">600x1200 Vitrified Tiles</span>
+          <span class="badge">300x600 Elevation Tiles</span>
+          <span class="badge">Delhi Supply</span>
+        </div>
+        <h1>Premium Tiles for Elegant Homes, Shops & Building Fronts</h1>
+        <p>Goel Traders brings you stylish vitrified tiles, modern wall designs and front elevation collections for homes, builders, contractors, architects and interior projects.</p>
+        <a class="btn" href="https://wa.me/918130230691">WhatsApp for Price</a>
+        <a class="btn secondary" href="tel:+918130230691">Call 8130230691</a>
+      </div>
+      <div class="hero-card">
+        <h3>Goel Traders</h3>
+        <p><strong>Location:</strong> B-12, West Jyoti Nagar, Main Loni Road, Delhi</p>
+        <p><strong>Main Products:</strong> 600x1200 vitrified tiles, 300x600 front elevation tiles</p>
+        <p><strong>Customer Type:</strong> Homeowners, contractors, builders, architects and interior designers</p>
+        <p><strong>Fast Inquiry:</strong> WhatsApp us directly for design photos and rates</p>
+      </div>
+    </div>
+  </header>
 
-<img src="tile1.jpg.jpeg" width="350">
-<p>600x1200 Vitrified Marble Design Tile</p>
+  <div class="quick-strip">
+    <div class="quick-grid">
+      <div class="quick-box"><h3>Premium Designs</h3><p>Modern glossy, marble, floral and elevation patterns.</p></div>
+      <div class="quick-box"><h3>Bulk Supply</h3><p>Reliable support for homes, shops and project orders.</p></div>
+      <div class="quick-box"><h3>Direct Contact</h3><p>Quick response on WhatsApp for rates and availability.</p></div>
+      <div class="quick-box"><h3>Delhi Based</h3><p>Trusted local tile and building material supplier.</p></div>
+    </div>
+  </div>
 
-<img src="tile2.jpg.jpeg" width="350">
-<p>Luxury Marble Finish Wall & Floor Tile</p>
+  <section id="about">
+    <h2>About Goel Traders</h2>
+    <p class="section-text">A trusted tile and building material destination for customers looking for style, quality and dependable supply.</p>
+    <div class="about">
+      <div>
+        <h3 style="margin-bottom:12px; font-size:1.6rem;">Your local partner for premium tile selection</h3>
+        <p style="margin-bottom:12px; color:#555;">At <span class="highlight">Goel Traders</span>, we supply high-demand tile ranges for modern homes, office spaces, building elevations and commercial projects. Our collection includes elegant marble-look vitrified tiles, bold statement designs and textured elevation options.</p>
+        <p style="margin-bottom:12px; color:#555;">We focus on practical pricing, attractive designs and smooth communication so customers can quickly shortlist the right tile for their space.</p>
+        <p style="margin-bottom:12px; color:#555;"><strong>Best For:</strong> Living rooms, bedrooms, bathrooms, feature walls, building fronts, shop interiors and renovation work.</p>
+        <p style="color:#555;"><strong>Address:</strong> B-12, West Jyoti Nagar, Main Loni Road, Delhi</p>
+      </div>
+      <div>
+        <img src="WhatsApp Image 2026-03-16 at 22.20.03.jpeg" alt="Goel Traders premium vitrified tile display" />
+      </div>
+    </div>
+  </section>
 
-</section>
+  <section id="products">
+    <h2>Featured Collections</h2>
+    <p class="section-text">Explore our featured tile categories selected from your actual showroom range.</p>
+    <div class="products">
+      <div class="card">
+        <img src="WhatsApp Image 2026-03-16 at 22.20.02.jpeg" alt="Grey marble vitrified tile" />
+        <div class="card-content">
+          <h3>600x1200 Marble Finish</h3>
+          <p>Large-format vitrified tiles with premium marble looks for floors, walls and luxurious interiors.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="WhatsApp Image 2026-03-16 at 22.20.04 (1).jpeg" alt="Cream glossy tile" />
+        <div class="card-content">
+          <h3>Glossy Elegant Finish</h3>
+          <p>Clean premium surfaces in soft cream shades for living rooms, bedrooms and modern spaces.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="WhatsApp Image 2026-03-13 at 17.59.00.jpeg" alt="Front elevation textured tile" />
+        <div class="card-content">
+          <h3>300x600 Elevation Tiles</h3>
+          <p>Stone-textured front elevation tiles for exterior walls, pillars, facade highlights and entrance styling.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="WhatsApp Image 2026-03-16 at 22.20.04.jpeg" alt="Black gold premium designer tile" />
+        <div class="card-content">
+          <h3>Designer Statement Tiles</h3>
+          <p>Bold floral and black-gold premium designs for standout walls and luxury visual appeal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="gallery">
+    <h2>Showroom Gallery</h2>
+    <p class="section-text">Real product photos from Goel Traders showroom. These designs can be shared directly with customers on WhatsApp.</p>
+    <div class="gallery">
+      <div class="card"><img src="WhatsApp Image 2026-03-13 at 17.59.00.jpeg" alt="Elevation tile 1"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-13 at 17.59.00 (1).jpeg" alt="Elevation tile 2"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-13 at 17.58.59.jpeg" alt="Elevation tile 3"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-13 at 17.58.59 (1).jpeg" alt="Elevation tile 4"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-13 at 17.58.59 (2).jpeg" alt="Elevation tile 5"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-13 at 17.58.59 (3).jpeg" alt="Elevation tile 6"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-13 at 17.58.58.jpeg" alt="Elevation tile 7"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-16 at 22.19.59.jpeg" alt="Vitrified tile 1"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-16 at 22.20.00.jpeg" alt="Vitrified tile 2"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-16 at 22.20.03.jpeg" alt="Vitrified tile 3"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-16 at 22.20.03 (1).jpeg" alt="Vitrified tile 4"></div>
+      <div class="card"><img src="WhatsApp Image 2026-03-16 at 22.20.04.jpeg" alt="Vitrified tile 5"></div>
+    </div>
+  </section>
+
+  <section id="premium-highlight">
+    <div class="feature-banner">
+      <div>
+        <h2 style="text-align:left; color:#fff; margin-bottom:12px;">Premium Designs for Modern Spaces</h2>
+        <p style="color:#ececec; margin-bottom:14px;">From soft marble shades to luxury black-gold designs, Goel Traders offers stylish tile options that upgrade both interiors and building fronts.</p>
+        <p style="color:#ececec; margin-bottom:10px;"><strong>Available Categories:</strong> glossy vitrified tiles, marble finish tiles, floral designer tiles, textured elevation tiles.</p>
+        <p style="color:#ececec; margin-bottom:18px;"><strong>Popular Sizes:</strong> 600x1200 and 300x600.</p>
+        <a class="btn" href="https://wa.me/918130230691">Get Latest Designs</a>
+      </div>
+      <img src="WhatsApp Image 2026-03-16 at 22.20.04.jpeg" alt="Premium black gold designer tile" />
+    </div>
+  </section>
+
+  <section id="why-us">
+    <h2>Why Customers Choose Us</h2>
+    <div class="cards">
+      <div class="card"><div class="card-content"><h3>Latest Designs</h3><p>Modern collections in elevation, marble, glossy and decorative finishes.</p></div></div>
+      <div class="card"><div class="card-content"><h3>Project Friendly</h3><p>Suitable for house construction, renovation, contractor work and interior projects.</p></div></div>
+      <div class="card"><div class="card-content"><h3>Quick Sharing</h3><p>Easy WhatsApp communication for sending tile photos and discussing requirements.</p></div></div>
+      <div class="card"><div class="card-content"><h3>Local Trust</h3><p>Delhi-based supplier with practical support for design selection and bulk inquiries.</p></div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Goel Traders</h2>
+    <p class="section-text">Call or message us for rates, design photos, availability and bulk order inquiries.</p>
+    <div class="contact-box">
+      <p><strong>Shop Name:</strong> Goel Traders</p>
+      <p><strong>Address:</strong> B-12, West Jyoti Nagar, Main Loni Road, Delhi</p>
+      <p><strong>Phone:</strong> +91 8130230691</p>
+      <p><strong>Email:</strong> goeltraders@gmail.com</p>
+      <p><strong>Main Range:</strong> 600x1200 Vitrified Tiles, 300x600 Front Elevation Tiles</p>
+      <p><strong>Also Available:</strong> Wall Tiles, Floor Tiles, Bricks & Building Materials</p>
+      <p style="margin-top:18px;">
+        <a class="btn" href="https://wa.me/918130230691">WhatsApp Us Now</a>
+        <a class="btn secondary" style="color:#333; border-color:#333;" href="tel:+918130230691">Call Now</a>
+      </p>
+    </div>
+
+    <div class="cta-final">
+      <h2 style="color:#fff; margin-bottom:10px;">Need Prices or More Designs?</h2>
+      <p style="max-width:700px; margin:0 auto 18px;">Contact Goel Traders on WhatsApp and get direct showroom tile photos, size details and rate information quickly.</p>
+      <a class="btn secondary" href="https://wa.me/918130230691">Chat on WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Goel Traders. All rights reserved.</p>
+  </footer>
+</body>
+</html>
